@@ -1,0 +1,18 @@
+<header class="appheader">Hai completato {{countDoneTasks()}} delle {{Tasks.length}} cose da fare</header>
+<app-todolist [currentTasks]="Tasks" (Deleted)="deleteTask($event)" (Edited)="editTask($event)" (Done)="checkTask($event)" (Timed)="addTaskTime($event)">
+</app-todolist>
+<app-clock></app-clock>
+<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Menu
+    </mat-panel-title>
+    <mat-panel-description>
+      <p class="paneldescription" *ngIf="panelOpenState===false">Click to expand and use features</p>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <mat-panel-description>
+      <button mat-button (click)="addTask()">Add Task</button>
+      <button mat-button (click)="removeAll()">Clean List</button>
+  </mat-panel-description>
+</mat-expansion-panel>

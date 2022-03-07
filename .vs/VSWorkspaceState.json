@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\todolist",
+    "\\src\\app\\toolbar",
+    "\\src\\models"
+  ],
+  "SelectedNode": "\\src\\app\\toolbar\\toolbar.component.ts",
+  "PreviewInSolutionExplorer": false
+}

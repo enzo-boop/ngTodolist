@@ -1,0 +1,13 @@
+<mat-card class='card' *ngFor="let task of currentTasks;let i=index">
+  <mat-card-header class="cardheader"><form mat-form [formGroup]="form" class="newuserform" *ngIf="task.time==='time';else time">
+    <mat-form-field>
+      <input matInput formControlName="time" type="time" hideRequiredMarker (blur)="taskTiming(task.id)" />
+    </mat-form-field></form>
+  <ng-template #time>{{task.time}}</ng-template></mat-card-header>
+  <mat-card-content class="taskcontent" (blur)="onEdit($event,task.id)" contenteditable="true">{{task.body}}</mat-card-content>
+  <mat-icon class="checkicon" *ngIf="task.done===true">check</mat-icon>
+  <mat-card-content>
+    <button mat-button (click)="onDone(task.id,i)">Done</button>
+    <button mat-button (click)="onDelete(task.id)">Delete</button>
+  </mat-card-content>
+</mat-card>
