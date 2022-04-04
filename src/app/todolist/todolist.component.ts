@@ -17,8 +17,6 @@ export class TodolistComponent implements OnInit {
 
   @Output() Deleted: EventEmitter<number> = new EventEmitter<number>();
 
-  @Output() Edited: EventEmitter<any> = new EventEmitter<any>();
-
   @Output() Timed:EventEmitter<any>=new EventEmitter<any>();
 
   onDone(id: number, index: number) {
@@ -30,12 +28,6 @@ export class TodolistComponent implements OnInit {
     this.Deleted.emit(id);
   }
 
-  onEdit(data: Event, id: number) {
-    let body = (<HTMLElement>data.target).textContent;
-    let obj = { id: id, body: body}
-    this.Edited.emit(obj);
-  }
-  
   taskTiming(id:number){
     let time=this.form.controls['time'].value;
     time ?? null;

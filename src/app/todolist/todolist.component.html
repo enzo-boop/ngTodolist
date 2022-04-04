@@ -4,10 +4,10 @@
       <input matInput formControlName="time" type="time" hideRequiredMarker (blur)="taskTiming(task.id)" />
     </mat-form-field></form>
   <ng-template #time>{{task.time}}</ng-template></mat-card-header>
-  <mat-card-content class="taskcontent" (blur)="onEdit($event,task.id)" contenteditable="true">{{task.body}}</mat-card-content>
-  <mat-icon class="checkicon" *ngIf="task.done===true">check</mat-icon>
+  <mat-card-content class="taskcontent">{{task.body}}</mat-card-content>
+  <mat-icon class="checkicon" *ngIf="task.done===true">done_outline</mat-icon>
   <mat-card-content>
-    <button mat-button (click)="onDone(task.id,i)">Done</button>
-    <button mat-button (click)="onDelete(task.id)">Delete</button>
+    <button mat-button (click)="onDone(task.id,i)"><mat-icon>check</mat-icon></button>
+    <button mat-button (click)="onDelete(task.id)"><mat-icon>delete</mat-icon></button>
   </mat-card-content>
 </mat-card>

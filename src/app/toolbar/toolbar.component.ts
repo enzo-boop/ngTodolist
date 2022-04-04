@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup ,Validators, FormControl} from '@angular/forms';
 import Task from 'src/models/interfaces';
 
 @Component({
@@ -21,24 +22,24 @@ export class ToolbarComponent implements OnInit {
   }
 
   addTask() {
-    let task: Task = { id:this.idCount, body: 'new task', time: 'time', done: false };
+    if(this.contentForm.errors===null&&this.contentForm.dirty===true){
+    let task: Task = { id:this.idCount, body: this.contentForm.controls['content'].value, time: 'time', done: false };
+    this.contentForm.reset();
     this.idCount++;
     this.Tasks.push(task);
     let index = this.Tasks.length-1;
     //animation with opacity
     setTimeout(() => { (<HTMLElement>document.getElementsByClassName('card')[index]).setAttribute('style', 'opacity:1') },10);
+    }
+    else{
+      console.warn('invalid task content');
+    }
   }
 
   deleteTask(id: number) {
     let targetTask = this.Tasks.filter((elem) => { return elem.id === id })[0]!;
     targetTask ?? null;
     targetTask !== null ? this.Tasks = this.Tasks.filter((elem) => { return elem.id !== id }) : console.warn('no task to delete found..');
-  }
-
-  editTask(changes: any) {
-    let targetTask = this.Tasks.filter((elem) => { return elem.id === changes.id })[0]!;
-    targetTask ?? null;
-    targetTask !== null ? this.Tasks.map((elem) => { elem.id === changes.id ? elem.body = changes.body : null }) : console.warn('no task to edit found..');
   }
 
   checkTask(data:any) {
@@ -68,7 +69,12 @@ export class ToolbarComponent implements OnInit {
     this.time=date.toLocaleTimeString().slice(0,5);
   }
 
-  constructor() {
+  contentForm:FormGroup;
+
+  constructor(private fb:FormBuilder) {
+    this.contentForm = fb.group({
+      content:new FormControl('',Validators['required']),
+    })
     setInterval(()=>{this.clock()},500);
    }
 

@@ -1,10 +1,11 @@
 body, .rootwrapper {
   height: 100vh;
   margin: 0;
-  background: url('https://i.pinimg.com/originals/15/cd/08/15cd08281f62bff7ec9237ae8c213c67.jpg');
+  background: url('https://i.pinimg.com/originals/15/cd/08/15cd08281f62bff7ec9237ae8c213c67.jpg') fixed;
   
 }
 .mat-expansion-panel{
+    background:#07141b !important;
     min-height:40px!important;
     width:360px!important;
     position:fixed!important;
@@ -12,6 +13,12 @@ body, .rootwrapper {
     right:5px;
 }
 .appheader {
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    z-index: 1;
+    margin: 0;
+    position: fixed;
+    top:0;
+    width: 100%;
   display:flex;
   height: 40px;
   justify-content:center;
@@ -21,7 +28,7 @@ body, .rootwrapper {
   font-variant:small-caps;
   color:#fff;
   font-size:22px;
-  backdrop-filter: blur(3px);
+  background:#07141b;
 }
 .cardheader{
     font-size:22px;
@@ -39,10 +46,14 @@ body, .rootwrapper {
     margin: 0;
     padding: 0;
 }
+.card:first-of-type{
+    margin:80px 0 0 0;
+}
 .card{
+    
+    background:#07141b;
     width:560px;
     opacity:0;
-    margin:2px;
 }
 .card:hover{
     filter:brightness(105%);
@@ -74,7 +85,7 @@ body, .rootwrapper {
 .bodyclock {
     position: fixed;
     right: 10px;
-    top:calc(50vh - 187.5px);
+    top:50px;
     border-radius: 50%;
     width: fit-content;
     display: flex;
@@ -85,8 +96,8 @@ body, .rootwrapper {
 }
 
 .clock {
-    width: 375px;
-    height: 375px;
+    width: 250px;
+    height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
